@@ -27,8 +27,8 @@ class SessionPatch < JPatch
     patches.each do |patch|
       puts "For site #{site.local_path}:"
       if patch.needs_patch? site
-        puts "Need to patch, but skipping for test"
-        #patch.patch_it(site)
+        #puts "Need to patch, but skipping for test"
+        patch.patch_it(site)
       else
         puts "Already patched...skipping"
       end
