@@ -32,6 +32,7 @@ class JServer
     r << "system"
     r << "default"
     r << "chroot"
+    r << ".skel"
     return r
   end
 end
