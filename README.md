@@ -1,0 +1,1 @@
+Internal project for patching joomla 1.5 sites against attacks.  Not really for public use.

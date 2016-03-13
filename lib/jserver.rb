@@ -19,4 +19,13 @@ class JServer
     puts paths.inspect
     return paths
   end
+  def bad_dirs
+    r = []
+    r << "fs"
+    r << "fs-passwd"
+    r << "system"
+    r << "default"
+    r << "chroot"
+    return r
+  end
 end

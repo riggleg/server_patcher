@@ -8,6 +8,7 @@ class SessionPatch < JPatch
     sfp.bad_md5 = "00ebe0c3ec353c82566a2e490c5e5c36"
     sfp.good_md5 = "63651a22d38b69f66959199955c5490c"
     sfp.replace_with = "1.5/libraries/joomla/session/session.php"
+    sfp.patch_name = self.class.name
     file_patches_1_5 = [sfp]
     self.file_patches["1.5"] = file_patches_1_5
     self.file_patches["3.3"] = false
@@ -25,7 +26,12 @@ class SessionPatch < JPatch
     patches = self.file_patches[site.joomla_version.to_s]
     patches.each do |patch|
       puts "For site #{site.local_path}:"
-      puts "Needs patch? #{patch.needs_patch? site}"
+      if patch.needs_patch? site
+        puts "Need to patch, but skipping for test"
+        #patch.patch_it(site)
+      else
+        puts "Already patched...skipping"
+      end
     end
   end
   

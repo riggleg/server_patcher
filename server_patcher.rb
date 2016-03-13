@@ -1,3 +1,9 @@
+require 'rubygems'
+require 'bundler'
+Bundler.require(:default)
+require 'active_support/all'
+require 'fileutils'
+
 def add_load_path(path)
   $LOAD_PATH.unshift(path) unless $LOAD_PATH.include?(path)
 end
@@ -7,8 +13,8 @@ add_load_path(File.join(File.dirname(__FILE__), 'lib', 'commands'))
 add_load_path(File.join(File.dirname(__FILE__), 'lib', 'jtests'))
 add_load_path(File.join(File.dirname(__FILE__), 'lib', 'jpatches'))
 
-puts $LOAD_PATH.inspect
 
+$program_root = File.expand_path(File.dirname(__FILE__))
 require 'jserver.rb'
 require 'jsite.rb'
 require 'jcommand.rb'
@@ -22,7 +28,7 @@ require 'file_patch.rb'
 require 'session_patch.rb'
 
 command_name = ARGV[0]
-www_root = ARGV[1]
-puts command_name
+www_root = "/var/www/vhosts"
+puts "Running command: #{command_name}"
 server = JServer.new(www_root)
 server.run_command(command_name.to_sym)
