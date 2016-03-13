@@ -1,0 +1,3 @@
+class JTest
+  
+end

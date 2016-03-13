@@ -1,0 +1,3 @@
+class JPatch < JCommand
+  
+end
