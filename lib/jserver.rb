@@ -15,8 +15,14 @@ class JServer
     end
   end
   def site_paths
-    paths = Pathname.new(server_www_root).children.select { |c| c.directory? }.map{|p| p + "httpdocs" }.map{|p| p.to_s}
+    #paths_before = Pathname.new(server_www_root).children.select { |c| c.directory? && !bad_dirs.include?(c.basename) }
+    paths = Pathname.new(server_www_root).children.select { |c| c.directory? && !bad_dirs.include?(c.basename.to_s) }.map{|p| p + "httpdocs" }.map{|p| p.to_s}
     puts paths.inspect
+    # paths_before.each do |p|
+    #   puts p
+    #   puts p.basename.inspect
+    #   puts bad_dirs.include?(p.basename.to_s)
+    # end
     return paths
   end
   def bad_dirs
